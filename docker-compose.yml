@@ -1,0 +1,24 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ./ubuntu-apache
+    ports: 
+      - 80:80
+    privileged: true
+    tty: true
+    # links:
+    #   - db
+    volumes:
+      #- "../PJblog/:/usr/local/apache2/htdocs"
+      - "./ubuntu-apache/httpd.conf:/etc/local/apache2/conf/httpd.conf"
+      # - "./ubuntu-apache/php.ini:/etc/php.ini"
+      # - "./ubuntu-apache/15-xdebug.ini:/etc/php.d/15-xdebug.ini"
+    container_name: "ubuntu-apache"
+  # db:
+  #   image: mysql:5.7
+  #   ports:
+  #     - 3306:3306
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=root
+  #   container_name: "mysql5.7"
